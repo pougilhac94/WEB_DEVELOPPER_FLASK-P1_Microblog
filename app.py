@@ -5,7 +5,7 @@ from pymongo import MongoClient
 
 
 def create_app(db_url=None):
-    #locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
 
     app = Flask(__name__)
     # Usage de la configuration de développement
