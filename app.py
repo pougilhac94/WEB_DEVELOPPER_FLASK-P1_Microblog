@@ -3,16 +3,18 @@ import locale
 from flask import Flask, render_template, request
 from pymongo import MongoClient
 
-#locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
-
-app = Flask(__name__)
-# Usage de la configuration de développement
-app.config.from_object('config.DevConfig')
-
-client = MongoClient(app.config.get("MONGODB_URI"))
-app.db = client.microblog
 
 def create_app(db_url=None):
+    #locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+
+    app = Flask(__name__)
+    # Usage de la configuration de développement
+    app.config.from_object('config.DevConfig')
+
+    client = MongoClient(app.config.get("MONGODB_URI"))
+    app.db = client.microblog
+
+
     @app.route("/", methods=["GET", "POST"])
     def home():
         if request.method == "POST":
@@ -32,4 +34,4 @@ def create_app(db_url=None):
     
     return app
 
-create_app()
+#create_app()
