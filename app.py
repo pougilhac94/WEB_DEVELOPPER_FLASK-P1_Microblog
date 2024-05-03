@@ -3,7 +3,7 @@ import locale
 from flask import Flask, render_template, request
 from pymongo import MongoClient
 
-locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+#locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
 
 app = Flask(__name__)
 # Usage de la configuration de développement
