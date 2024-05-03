@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Microblog</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar__brand">
+      <img class="navbar__logo" src="/static/images/logo.svg" alt="The Microblog logo" />Microblog
+    </div>
+    <ul class="navbar__navigation">
+      <li class="navbar__navigation-item">
+        <a href="#" class="navbar__link">Nouveautés</a>
+      </li>
+      <li class="navbar__navigation-item">
+        <a href="#" class="navbar__link">Calendrier</a>
+      </li>
+    </ul>
+  </header>
+  <main class="main">
+    <section>
+      <h1>Ajouter un message</h1>
+      <form class="form" method="POST">
+        <p class="form__input">
+          <label for="entry" class="form__label">Contenu du message:</label>
+          <textarea name="content" id="entry" class="form__textarea"></textarea>
+        </p>
+        <button type="submit" class="form__submit">Ajouter un message</button>
+      </form>
+    </section>
+    <section>
+      <h1>Derniers messages</h1>
+      {% for entry in entries %}
+        <article class="entry">
+          <div>
+            <h2 class="entry__title">{{ entry.content | truncate(30, true) }}</h2>
+            <time class="entry__date" datetime="{{ entry.date }}">• {{ entry.month_year }}</time>
+          </div>
+          <p class="entry__content">
+            {{ entry[0] }}
+          </p>
+        </article>
+      {% endfor %}
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__content">
+      <section class="left">
+        <a class="footer__item">Fait par Pougilhac</a>
+        <a class="footer__item">Mes autres projets</a>
+      </section>
+      <section class="right">
+        <div class="footer__column">
+          <a class="footer__item">Nouveautés</a>
+          <a class="footer__item">Calendrier</a>
+        </div>
+        <div class="footer__column">
+          <a class="footer__item" href="#">A propos</a>
+          <a class="footer__item">Structure</a>
+        </div>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>
